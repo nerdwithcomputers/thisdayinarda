@@ -1,6 +1,12 @@
 import { Text, View } from "react-native";
 import axios from "axios";
 
+var body = '';
+
+axios.get("https://tolkiengateway.net/wiki/2_November").then(function(response){
+    body = response
+});
+
 export default function Index() {
   return (
     <View
@@ -10,8 +16,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <>axios.get('https://tolkiengateway.net/wiki/2_November')</>
-      <Text></Text>
+      <>{body}</>
     </View>
   );
 }
