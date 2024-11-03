@@ -3,7 +3,7 @@ import axios from "axios";
 
 // line ~400 of source
 
-var body = '';
+var body;
 
 axios.get("https://tolkiengateway.net/wiki/2_November").then(function(response){
     body = response
