@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
-// line ~400 of source
+// line ~400 of source is where i want
 
 function Retrieve(){
-  const [get, setGet] = useState([]);
+  const [get, setGet] = useState(['loading...']);
   useEffect(()=>{
     fetch(
       'https://quotes.toscrape.com/',
-      {
-        method:'GET'
-      }
+      {method:'GET'}
     ).then(
       (data)=>{
-        setGet(data.text);
+        setGet(data);
+        console.log(data);
       }
-    );
+    ).catch((error)=>setGet(error));
   });
   return(
     <>
-      {get}
+      {get.toString()}
     </>
   );
 }
@@ -34,7 +33,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-    <Retrieve></Retrieve>
+    <Retrieve/>
     </View>
   );
 }
