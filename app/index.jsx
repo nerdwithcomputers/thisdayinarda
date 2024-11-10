@@ -1,13 +1,29 @@
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import axios from "axios";
 
 // line ~400 of source
 
-var body;
+function Retrieve(){
+  const [get, setGet] = useState([]);
+  useEffect(()=>{
+    fetch(
+      'https://quotes.toscrape.com/',
+      {
+        method:'GET'
+      }
+    ).then(
+      (data)=>{
+        setGet(data.text);
+      }
+    );
+  });
+  return(
+    <>
+      {get}
+    </>
+  );
+}
 
-axios.get("https://tolkiengateway.net/wiki/2_November").then(function(response){
-    body = response
-});
 
 export default function Index() {
   return (
@@ -18,7 +34,7 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <>{body}</>
+    <Retrieve></Retrieve>
     </View>
   );
 }
