@@ -8,11 +8,16 @@ function Retrieve(){
   useEffect(()=>{
     fetch(
       'https://quotes.toscrape.com/',
-      {method:'GET'}
+      {
+        method:'GET'
+      }
     ).then(
       (data)=>{
-        setGet(data);
-        console.log(data);
+        return data.text()
+      }
+    ).then(
+      (body)=>{
+        setGet(body)
       }
     ).catch((error)=>setGet(error));
   });
