@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
+import axios from "axios";
 
 // line ~400 of source is where i want
 
 function Retrieve(){
   const [get, setGet] = useState(['loading...']);
   useEffect(()=>{
-    fetch(
-      'https://quotes.toscrape.com/',
-      {
-        method:'GET'
-      }
+    axios.get(
+      'https://quotes.toscrape.com/'
     ).then(
       (data)=>{
         return data.text()
