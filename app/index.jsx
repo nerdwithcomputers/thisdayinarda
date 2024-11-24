@@ -7,17 +7,11 @@ import axios from "axios";
 function Retrieve(){
   const [get, setGet] = useState(['loading...']);
   useEffect(()=>{
-    axios.get(
-      'https://quotes.toscrape.com/'
-    ).then(
-      (data)=>{
-        return data.text()
-      }
-    ).then(
-      (body)=>{
-        setGet(body)
-      }
-    ).catch((error)=>setGet(error));
+    fetch('https://localhost:3000', 
+      {headers: {
+        "url":"https://tolkiengateway.net/wiki/2_November"
+      }}
+    )
   });
   return(
     <>
