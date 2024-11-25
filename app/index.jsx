@@ -5,7 +5,7 @@ import { Text, View } from "react-native";
 
 function Retrieve(){
   const [get, setGet] = useState(['loading...']);
-  const matcher = /(?<=)/;
+  const matcher = /(?<=\<section class=\"citizen-section\" id\=\"citizen-section-2\">)(.*)(?=\<\/section\>)/;
   useEffect(()=>{
     fetch('http://127.0.0.1:3000', 
       {headers: {
@@ -15,6 +15,8 @@ function Retrieve(){
       (x)=>x.text()
     ).then(
       (x)=>{
+        let y = x.match(matcher);
+        console.log(y);
         setGet(x);
         console.log(x);
       }
