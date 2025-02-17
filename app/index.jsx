@@ -14,19 +14,20 @@ function Retrieve(){
   // console.log(date);
   const dateArr=date.split(' ');
   switch(dateArr[1]){
-    case'Jan': month='January';
-    case'Feb': month='February';
-    case'Mar': month='March';
-    case'Apr': month='April';
-    case'May': month='May';
-    case'Jun': month='June';
-    case'Jul': month='July';
-    case'Aug': month='August';
-    case'Sep': month='September';
-    case'Nov': month='November';
-    case'Oct': month='October';
-    case'Dec': month='December';
+    case'Jan': month='January'; break;
+    case'Feb': month='February'; break;
+    case'Mar': month='March'; break;
+    case'Apr': month='April'; break;
+    case'May': month='May'; break;
+    case'Jun': month='June'; break;
+    case'Jul': month='July'; break;
+    case'Aug': month='August'; break;
+    case'Sep': month='September'; break;
+    case'Nov': month='November'; break;
+    case'Oct': month='October'; break;
+    case'Dec': month='December'; break;
   }
+  // console.log(month)
   if(dateArr[2][0]=='0') day = dateArr[2][1];
   else day = dateArr[2];
   useEffect(()=>{
@@ -44,7 +45,14 @@ function Retrieve(){
     )
   });
   return(
-    <Text>{get}</Text>
+    <>
+      <Text
+        style = {
+          backgroundColor= "cream"
+        }
+      >{get}</Text>
+      
+    </>
   );
 }
 
@@ -56,6 +64,7 @@ export default function Index() {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        backgroundColor: "black",
       }}
     >
       <ScrollView>
