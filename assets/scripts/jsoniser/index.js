@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const header = /(\d)+_/
-var map = new Map();
+var list = new Map();
 
 fs.readFile('../../tolkien.txt', 'utf-8', (err,data)=>{
     if(err){
@@ -15,15 +15,14 @@ fs.readFile('../../tolkien.txt', 'utf-8', (err,data)=>{
     for(const el of splitArr){
         if(el.match(header)){
             date = el;
-            map.set(date,);
             continue;
         }else{
-            let arr = map.get(date);
-            arr.append(el);
-            map.set(date,arr);
+            let arr = list.get(date) ? list.get(date) : [];
+            arr.push(el);
+            list.set(date,arr);
         }
     }
-    json = Object.fromEntries(map);
+    json = Object.fromEntries(list);
     final = JSON.stringify(json);
     fs.writeFile('tolkien.json',final,(err,data)=>{
         if(err){
