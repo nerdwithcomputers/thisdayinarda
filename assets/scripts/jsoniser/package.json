@@ -1,0 +1,11 @@
+{
+  "name": "jsoniser",
+  "version": "1.0.0",
+  "description": "a jsoniser to turn raw scraped data from tolkien gateway to a nice json file to use for this app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "miraclemax",
+  "license": "ISC"
+}

@@ -27,31 +27,42 @@ function Retrieve(){
     case'Oct': month='October'; break;
     case'Dec': month='December'; break;
   }
-  // console.log(month)
+  console.log(month)
   if(dateArr[2][0]=='0') day = dateArr[2][1];
   else day = dateArr[2];
   useEffect(()=>{
+    console.log(`https://tolkiengateway.net/wiki/${day}_${month}`);
     fetch('http://m1raclemax.hackclub.app:42449', 
-      {headers: {
-        "url":`https://tolkiengateway.net/wiki/${day}_${month}`
-      }}
-    ).then((x)=>x.text()).then(
+      {
+        headers: {
+          "url":`https://tolkiengateway.net/wiki/${day}_${month}`
+        }
+      }
+    ).then(
       (x)=>{
+        return x.text();
+      }
+    ).then(
+      (x)=>{
+        console.log('hello');
+        console.log(x);
         const $ = cheerio.load(x);
         let text = $('#citizen-section-2').text();
+        console.log(text);
         setGet(text);
         // console.log(x);
       }
-    )
+    );
+    // console.log('end of line');
   });
   return(
     <>
       <Text
-        style = {
-          backgroundColor= "cream"
-        }
+        style = {{
+          // backgroundColor: "cream",
+          color:"red"
+        }}
       >{get}</Text>
-      
     </>
   );
 }
