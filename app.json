@@ -30,7 +30,13 @@
     "plugins": [
       "expo-router",
       "expo-font",
-      "expo-web-browser"
+      "expo-web-browser",
+      [
+        "expo-asset",
+        {
+          "assets": ["./../tolkien.json"]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
