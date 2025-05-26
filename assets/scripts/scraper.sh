@@ -2,7 +2,7 @@
 
 sleep 1.5
 
-for n in {1..366};
+for n in {1..350};
 do
   ydotool click 0xc0
   ydotool key $(ydokey -k ctrl+meta+down)

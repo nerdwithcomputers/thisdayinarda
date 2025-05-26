@@ -1,15 +1,57 @@
-import { useEffect, useState } from "react";
-import { Text, View, ScrollView, useWindowDimensions } from "react-native";
-const calendar = require('./assets/tolkien.json');
+// import { useEffect, useState } from "react";
+import {StyleSheet, Text, View, ScrollView, useWindowDimensions} from "react-native";
+const calendar = require('./../assets/tolkien.json');
+
+const palette = [
+  '#bd1919',
+  '#229c9c',
+  '#19bdbd',
+  '#008585',
+  '#004343',
+  '#002222'
+];
+const palette1 = [
+  '#a2c8a7',
+  '#6aa96f',
+  '#3a7e44',
+  '#1a6033',
+  '#1a6033',
+  '#0b3c20'
+]
+const sheet = StyleSheet.create({
+  container:{
+    flex: 3,
+    // margin:10,
+    backgroundColor: palette[5]
+  },
+  title:{
+    color: palette[5],
+    textAlign:"center",
+    fontSize:60,
+    // flex:1,
+    backgroundColor:palette[3],
+    marginTop:30
+  },
+  dateCardText:{
+    color:palette[0],
+    align:"center",
+    textAlign:"left",
+    flex:1,
+    margin:15,
+    width:'75%',
+  },
+  dateCardBox:{
+    alignItems:"center",
+    backgroundColor:palette[4]
+  }
+})
 
 function Retrieve(){
-  const [get, setGet] = useState('loading');
   const date = Date();
-  var month = '';
-  var day = '';
+  let month, day = '';
   // console.log(date);
   const dateArr=date.split(' ');
-  day = dateArr[0];
+  day = dateArr[2];
   switch(dateArr[1]){
     case'Jan': month='January'; break;
     case'Feb': month='February'; break;
@@ -23,33 +65,37 @@ function Retrieve(){
     case'Nov': month='November'; break;
     case'Oct': month='October'; break;
     case'Dec': month='December'; break;
+  };
+  month="March"
+  let get = calendar[`${day}_${month}`];
+  let text='';
+  for(let i in get){
+    let entry = get[i];
+    if(entry.endsWith(':')){
+      // ternary go brr
+    //condition \/  true \/       false \/
+      text+= i==0 ? entry+'\n' : '\n'+entry+'\n'
+    }else{
+      text += entry+'\n'
+    }
   }
-  console.log(month);
-  setGet(calendar[`${day}_${month}`]);
   return(
-    <>
-      <Text
-        style = {{
-          // backgroundColor: "cream",
-          color:"red"
-        }}
-      >{get}</Text>
-    </>
+    <View style={sheet.dateCardBox}>
+      <Text style={sheet.dateCardText}>
+        {text}
+      </Text>
+    </View>
   );
 }
 
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "black",
-      }}
-    >
+  return(
+    <View style={sheet.container}>
       <ScrollView>
+        <Text style={sheet.title}>
+          Today in Arda
+        </Text>
         <Retrieve/>
       </ScrollView>
     </View>

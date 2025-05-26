@@ -13,7 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.m1raclemax.thisdayinarda",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -34,7 +38,9 @@
       [
         "expo-asset",
         {
-          "assets": ["./../tolkien.json"]
+          "assets": [
+            "./../tolkien.json"
+          ]
         }
       ]
     ],
