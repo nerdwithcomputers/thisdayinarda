@@ -42,7 +42,9 @@ const sheet = StyleSheet.create({
   },
   dateCardBox:{
     alignItems:"center",
-    backgroundColor:palette[4]
+    backgroundColor:palette[4],
+    borderRadius: 30,
+    marginTop:30
   }
 })
 
@@ -102,8 +104,6 @@ export default function Index() {
       setWhich('Arda');
       setCalendar(calendarArda);
     }
-    // console.log(which);
-    // console.log(calendar);
   }
   return(
     <View style={sheet.container}>
@@ -111,7 +111,6 @@ export default function Index() {
         <Text style={sheet.title} onPress={swap}>
           Today in {which}
         </Text>
-        {/* <Text>hello</Text> */}
         <Retrieve which={calendar}/>
       </ScrollView>
     </View>
