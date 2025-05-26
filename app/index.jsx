@@ -1,7 +1,7 @@
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {StyleSheet, Text, View, ScrollView, useWindowDimensions} from "react-native";
-const calendar = require('./../assets/tolkien.json');
-
+const calendarArda = require('./../assets/tolkien.json');
+const calendarIRL = require('./../assets/irl.json');
 const palette = [
   '#bd1919',
   '#229c9c',
@@ -46,10 +46,10 @@ const sheet = StyleSheet.create({
   }
 })
 
-function Retrieve(){
+function Retrieve(which){
   const date = Date();
   let month, day = '';
-  // console.log(date);
+  let calendar = which=='Arda'? calendarArda : calendarIRL;
   const dateArr=date.split(' ');
   day = dateArr[2];
   switch(dateArr[1]){
@@ -66,7 +66,7 @@ function Retrieve(){
     case'Oct': month='October'; break;
     case'Dec': month='December'; break;
   };
-  month="March"
+  // month="March"
   let get = calendar[`${day}_${month}`];
   let text='';
   for(let i in get){
@@ -75,8 +75,10 @@ function Retrieve(){
       // ternary go brr
     //condition \/  true \/       false \/
       text+= i==0 ? entry+'\n' : '\n'+entry+'\n'
+    }else if(entry.match(/\d* -/)){
+      text+= entry+'\n\n'
     }else{
-      text += entry+'\n'
+      text+= entry+'\n'
     }
   }
   return(
@@ -88,15 +90,21 @@ function Retrieve(){
   );
 }
 
-
 export default function Index() {
+  const [which, setWhich] = useState('Arda');
+  const swap=()=>{
+    if(which=='Arda') setWhich('History');
+    else setWhich('Arda');
+    console.log(which);
+  }
   return(
     <View style={sheet.container}>
       <ScrollView>
-        <Text style={sheet.title}>
-          Today in Arda
+        <Text style={sheet.title} onPress={swap}>
+          Today in {which}
         </Text>
-        <Retrieve/>
+        {/* <Text>hello</Text> */}
+        <Retrieve which={which}/>
       </ScrollView>
     </View>
   );
