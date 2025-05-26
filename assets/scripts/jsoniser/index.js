@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const header = /(\d)+_/
 var list = new Map();
 
-fs.readFile('../../tolkien.txt', 'utf-8', (err,data)=>{
+fs.readFile('../../irl.txt', 'utf-8', (err,data)=>{
     if(err){
         console.error(err);
         return;
@@ -24,7 +24,7 @@ fs.readFile('../../tolkien.txt', 'utf-8', (err,data)=>{
     }
     json = Object.fromEntries(list);
     final = JSON.stringify(json);
-    fs.writeFile('tolkien.json',final,(err,data)=>{
+    fs.writeFile('irl.json',final,(err,data)=>{
         if(err){
             console.error(err);
         }else{
