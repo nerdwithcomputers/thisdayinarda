@@ -46,10 +46,11 @@ const sheet = StyleSheet.create({
   }
 })
 
-function Retrieve(which){
+function Retrieve(calendar){
   const date = Date();
   let month, day = '';
-  let calendar = which=='Arda'? calendarArda : calendarIRL;
+  // let calendar = which;
+  // console.log(calendar.which)
   const dateArr=date.split(' ');
   day = dateArr[2];
   switch(dateArr[1]){
@@ -67,7 +68,7 @@ function Retrieve(which){
     case'Dec': month='December'; break;
   };
   // month="March"
-  let get = calendar[`${day}_${month}`];
+  let get = calendar.which[`${day}_${month}`];
   let text='';
   for(let i in get){
     let entry = get[i];
@@ -92,10 +93,17 @@ function Retrieve(which){
 
 export default function Index() {
   const [which, setWhich] = useState('Arda');
+  const [calendar, setCalendar] = useState(calendarArda)
   const swap=()=>{
-    if(which=='Arda') setWhich('History');
-    else setWhich('Arda');
-    console.log(which);
+    if(which=='Arda'){
+      setWhich('History');
+      setCalendar(calendarIRL);
+    }else{
+      setWhich('Arda');
+      setCalendar(calendarArda);
+    }
+    // console.log(which);
+    // console.log(calendar);
   }
   return(
     <View style={sheet.container}>
@@ -104,7 +112,7 @@ export default function Index() {
           Today in {which}
         </Text>
         {/* <Text>hello</Text> */}
-        <Retrieve which={which}/>
+        <Retrieve which={calendar}/>
       </ScrollView>
     </View>
   );
