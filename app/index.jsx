@@ -1,6 +1,7 @@
-import { useState } from "react";
+import {useState} from "react";
 import {Text, View, ScrollView, useWindowDimensions} from "react-native";
 import sheet from "./style";
+import BorderImg from "./borderimg";
 const calendarArda = require('./../assets/tolkien.json');
 const calendarIRL = require('./../assets/irl.json');
 
@@ -72,7 +73,9 @@ export default function Index() {
         <Text style={sheet.subtitle}>
           click to swap from arda to irl
         </Text>
+        <BorderImg>
         <Retrieve which={calendar}/>
+        </BorderImg>
       </ScrollView>
     </View>
   );

@@ -48,7 +48,7 @@ const sheet = StyleSheet.create({
     textAlign:"left",
     flex:1,
     margin:15,
-    width:"80%",
+    width:"90%",
   },
   dateCardBox:{
     alignItems:"center",
