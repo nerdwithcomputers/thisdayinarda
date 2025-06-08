@@ -1,19 +1,20 @@
 import {useState} from "react";
-import {Text, View, ScrollView, useWindowDimensions} from "react-native";
+import {Text, View, ScrollView, useWindowDimensions, ImageBackground} from "react-native";
 import sheet from "./style";
-import BorderImg from "./borderimg";
+// import Retrieve from "./Retrieve"
 const calendarArda = require('./../assets/tolkien.json');
 const calendarIRL = require('./../assets/irl.json');
 
-// console.log(sheet);
+// console.log(calendarArda);
 
-function Retrieve(calendar){
+function Retrieve(args){
   const date = Date();
+  // console.log(cal);
   let month, day = '';
   // let calendar = which;
-  // console.log(calendar.which)
+  // console.log(cal.which)
   const dateArr=date.split(' ');
-  day = dateArr[2];
+  day = parseInt(dateArr[2]);
   switch(dateArr[1]){
     case'Jan': month='January'; break;
     case'Feb': month='February'; break;
@@ -28,20 +29,22 @@ function Retrieve(calendar){
     case'Oct': month='October'; break;
     case'Dec': month='December'; break;
   };
-  // month="March"
-  let get = calendar.which[`${day}_${month}`];
+  // console.log(month);
+  console.log(`${day}_${month}`);
+  let get = args.cal[`${day}_${month}`];
+  console.log(get);
   let text='';
   for(let i in get){
     let entry = get[i];
     if(entry.endsWith(':')){
       // ternary go brr
-    //condition \/  true \/       false \/
       text+= i==0 ? entry+'\n' : '\n'+entry+'\n'
     }else if(entry.match(/\d* -/)){
-      text+= entry+'\n\n'
+      text+=entry+'\n\n'
     }else{
-      text+= entry+'\n'
+      text+=entry+'\n'
     }
+    // console.log(text);
   }
   return(
     <View style={sheet.dateCardBox}>
@@ -52,9 +55,25 @@ function Retrieve(calendar){
   );
 }
 
+function RetrieveWBorder(args){
+  return(
+    <>
+      <ImageBackground
+        source={require("../assets/images/border.png")}
+        imageStyle={{
+          resizeMode:'repeat'
+        }}
+      >
+        <Retrieve cal={args.cal}/>
+      </ImageBackground>
+    </>
+  )
+}
+
+
 export default function Index() {
   const [which, setWhich] = useState('Arda');
-  const [calendar, setCalendar] = useState(calendarArda)
+  const [calendar, setCalendar] = useState(calendarArda);
   const swap=()=>{
     if(which=='Arda'){
       setWhich('History');
@@ -64,6 +83,9 @@ export default function Index() {
       setCalendar(calendarArda);
     }
   }
+
+  // console.log(calendar);
+
   return(
     <View style={sheet.container}>
       <ScrollView>
@@ -73,9 +95,7 @@ export default function Index() {
         <Text style={sheet.subtitle}>
           click to swap from arda to irl
         </Text>
-        <BorderImg>
-        <Retrieve which={calendar}/>
-        </BorderImg>
+        <RetrieveWBorder cal={calendar}/>
       </ScrollView>
     </View>
   );
