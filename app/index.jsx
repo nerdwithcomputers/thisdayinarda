@@ -57,16 +57,28 @@ function Retrieve(args){
 
 function RetrieveWBorder(args){
   return(
-    <>
+    <View style={{width:"80%", alignSelf:"center", alignContent:"center"}}>
       <ImageBackground
         source={require("../assets/images/border.png")}
+        style={{
+          alignSelf:"center",
+          alignItems:"center",
+          alignContent:"center",
+          // margin:30,
+          maxWidth:"90%"
+        }}
         imageStyle={{
-          resizeMode:'repeat'
+          resizeMode:"repeat",
+          maxWidth:"80%",
+          alignSelf:"center",
+          alignItems:"center",
+          alignContent:"center",
+          borderRadius:30
         }}
       >
         <Retrieve cal={args.cal}/>
       </ImageBackground>
-    </>
+    </View>
   )
 }
 

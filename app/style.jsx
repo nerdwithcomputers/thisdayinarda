@@ -54,7 +54,8 @@ const sheet = StyleSheet.create({
     alignItems:"center",
     backgroundColor:palette[4],
     borderRadius: 30,
-    marginTop:30,
+    margin:10,
+    // marginBottom:10,
     width:"80%",
     alignSelf:"center"
   }
