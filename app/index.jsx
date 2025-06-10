@@ -57,24 +57,11 @@ function Retrieve(args){
 
 function RetrieveWBorder(args){
   return(
-    <View style={{width:"80%", alignSelf:"center", alignContent:"center"}}>
+    <View style={sheet.center}>
       <ImageBackground
         source={require("../assets/images/border.png")}
-        style={{
-          alignSelf:"center",
-          alignItems:"center",
-          alignContent:"center",
-          // margin:30,
-          maxWidth:"90%"
-        }}
-        imageStyle={{
-          resizeMode:"repeat",
-          maxWidth:"80%",
-          alignSelf:"center",
-          alignItems:"center",
-          alignContent:"center",
-          borderRadius:30
-        }}
+        style={[sheet.center, sheet.imageBack1]}
+        imageStyle={[sheet.center, sheet.imageBack]}
       >
         <Retrieve cal={args.cal}/>
       </ImageBackground>
@@ -100,13 +87,13 @@ export default function Index() {
 
   return(
     <View style={sheet.container}>
+      <Text style={sheet.title} onPress={swap}>
+        Today in {which}
+      </Text>
+      <Text style={sheet.subtitle}>
+        click to swap from arda to irl
+      </Text>
       <ScrollView>
-        <Text style={sheet.title} onPress={swap}>
-          Today in {which}
-        </Text>
-        <Text style={sheet.subtitle}>
-          click to swap from arda to irl
-        </Text>
         <RetrieveWBorder cal={calendar}/>
       </ScrollView>
     </View>

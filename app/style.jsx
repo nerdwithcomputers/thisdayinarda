@@ -18,6 +18,11 @@ const palette1 = [
   '#0b3c20'
 ]
 const sheet = StyleSheet.create({
+  center:{
+    alignSelf:"center",
+    alignItems:"center",
+    alignContent:"center"
+  },
   container:{
     flex: 3,
     // margin:10,
@@ -39,7 +44,7 @@ const sheet = StyleSheet.create({
     // flex:1,
     backgroundColor:palette[3],
     // marginTop:30,
-    borderBottomRightRadius: 30
+    // borderBottomRightRadius: 30
   },
   dateCardText:{
     color:palette[0],
@@ -48,7 +53,7 @@ const sheet = StyleSheet.create({
     textAlign:"left",
     flex:1,
     margin:15,
-    width:"90%",
+    maxWidth:"90%",
   },
   dateCardBox:{
     alignItems:"center",
@@ -56,9 +61,22 @@ const sheet = StyleSheet.create({
     borderRadius: 30,
     margin:10,
     // marginBottom:10,
+    maxWidth:"95%",
     width:"80%",
     alignSelf:"center"
-  }
+  },
+  imageBack:{
+    resizeMode:"repeat",
+    // maxWidth:"95%",
+    borderRadius:30,
+    // marginTop:10
+  },
+  imageBack1:{
+    resizeMode:"repeat",
+    // maxWidth:"95%",
+    borderRadius:30,
+    marginTop:10
+  },
 })
 
 export default sheet
