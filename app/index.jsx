@@ -37,7 +37,6 @@ function Retrieve(args){
   for(let i in get){
     let entry = get[i];
     if(entry.endsWith(':')){
-      // ternary go brr
       text+= i==0 ? entry+'\n' : '\n'+entry+'\n'
     }else if(entry.match(/\d* -/)){
       text+=entry+'\n\n'
@@ -59,7 +58,7 @@ function RetrieveWBorder(args){
   return(
     <View style={sheet.center}>
       <ImageBackground
-        source={require("../assets/images/border.png")}
+        source={require("../edge.png")}
         style={[sheet.center, sheet.imageBack1]}
         imageStyle={[sheet.center, sheet.imageBack]}
       >

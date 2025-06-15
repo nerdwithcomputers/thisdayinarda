@@ -1,21 +1,30 @@
 import { StyleSheet } from "react-native";
 
+/*
+text colour
+x
+x
+title block
+datecard bg
+background
+*/
+
 // const {height, width} = useWindowDimensions();
-const palette = [
+let p=1
+const palette = p==0 ? [
   '#bd1919',
   '#229c9c',
   '#19bdbd',
   '#008585',
   '#004343',
   '#002222'
-];
-const palette1 = [
-  '#a2c8a7',
+] : [
+  '#C7F011',
   '#6aa96f',
   '#3a7e44',
   '#1a6033',
-  '#1a6033',
-  '#0b3c20'
+  '#18883F',
+  '#205716'
 ]
 const sheet = StyleSheet.create({
   center:{
@@ -29,22 +38,19 @@ const sheet = StyleSheet.create({
     backgroundColor: palette[5]
   },
   title:{
-    color: palette[5],
+    color: palette[0],
     textAlign:"center",
-    fontSize:60,
-    // flex:1,
+    fontSize:50,
     backgroundColor:palette[3],
     marginTop:30,
-    // borderBottomRightRadius: 30
+    
   },
   subtitle:{
     color: palette[4],
     textAlign:"center",
     fontSize:20,
-    // flex:1,
     backgroundColor:palette[3],
     // marginTop:30,
-    // borderBottomRightRadius: 30
   },
   dateCardText:{
     color:palette[0],
@@ -57,19 +63,19 @@ const sheet = StyleSheet.create({
   },
   dateCardBox:{
     alignItems:"center",
-    backgroundColor:palette[4],
-    borderRadius: 30,
-    margin:10,
+    backgroundColor:palette[5],
+    borderRadius:20,
+    margin:5,
     // marginBottom:10,
     maxWidth:"95%",
-    width:"80%",
+    minWidth:"90%",
+    // width:"80%",
     alignSelf:"center"
   },
   imageBack:{
     resizeMode:"repeat",
-    // maxWidth:"95%",
-    borderRadius:30,
-    // marginTop:10
+    borderRadius:10,
+    
   },
   imageBack1:{
     resizeMode:"repeat",
