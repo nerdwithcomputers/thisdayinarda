@@ -39,7 +39,7 @@
         "expo-asset",
         {
           "assets": [
-            "./tolkien.json"
+            "./assets/tolkien.json"
           ]
         }
       ]
