@@ -2,7 +2,7 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app), created because I thought it would be a simple and fun project for my girlfriend. It was not as simple as I thought it would be, but it was pretty fun, I now know how to develop apps, and I have a cool present for my girlfriend so I really can't say I lost from this.
 
-![image]()
+![image](https://github.com/nerdwithcomputers/thisdayinarda/blob/main/assets/images/Screenshot_20250705-140125.png)
 
 ## Get started
 
